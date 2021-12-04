@@ -33,7 +33,7 @@ jobs:
           echo "::set-output name=TAG::${TAG}"
           echo "::set-output name=PATH_TAR::${PATH_TAR}"
 
-      - name: Cache or restore image archive
+      - name: Enable Cache to save/restore image archive
         id: cache
         uses: actions/cache@v2
         with:
