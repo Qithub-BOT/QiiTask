@@ -13,6 +13,8 @@ WIP
     ```bash
     brew install qithub-bot/apps/qiitask
     ```
+    <details><summary>Upgrade & Uninstall</summary>
+
     ```bash
     # Upgrade to latest version
     brew upgrade qiitask
@@ -22,6 +24,8 @@ WIP
     brew untap qithub-bot/apps
     brew doctor
     ```
+    </details>
+
 - Go Install (Go v1.16+)
     ```bash
     go install "github.com/Qithub-BOT/QiiTask/qiitask@latest"
