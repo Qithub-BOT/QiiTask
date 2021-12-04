@@ -1,0 +1,5 @@
+*.cache
+man
+coverage.out
+/bin/*
+dist/

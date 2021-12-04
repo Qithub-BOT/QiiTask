@@ -1,0 +1,73 @@
+# =============================================================================
+#  Weekly Module Update
+# =============================================================================
+# This workflow runs monthly to:
+#   1. Update the `go.mod` and `go.sum` files if all the tests succeeds to run
+#      in all Go versions with that updated versions. (Go v1.15~latest)
+#   2. Test `go get -u` and `go install` functionality of the latest release.
+#   3. Pull request the updated `go.mod` and `go.sum`
+#
+# NOTE:
+# You need to set the "PERSONAL_ACCESS_TOKEN" env variable in the repository
+# secreat of your repo at:
+#     [Settings]-[Secrets]-[Actions secrets]
+# To generate a new token go to:
+#     https://github.com/settings/tokens
+#     * You need add the "repo" scope to the token but no more.
+# =============================================================================
+name: Monthly Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Runs At 19:00 UTC (AM 04:00 JST) on day-of-month 1
+    - cron: "0 19 1 * *"
+
+jobs:
+  automated_build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Check current install functionality
+        run: |
+          set -eu
+          : # Check go install functionality
+          docker-compose --file ./.github/docker-compose.yml up --abort-on-container-exit gogetu
+          docker-compose --file ./.github/docker-compose.yml up --abort-on-container-exit goinstall
+          : # Check brew functionality
+          docker-compose --file ./.github/docker-compose.yml up --abort-on-container-exit linuxbrew
+
+      - name: Update go.mod and run tests
+        run: |
+          set -eu
+          : # Update go.mod and go.sum
+          docker-compose --file ./.github/docker-compose.yml up --abort-on-container-exit tidy
+          : # Check module version compatibility
+          docker-compose --file ./.github/docker-compose.yml up --abort-on-container-exit v1_15
+          docker-compose --file ./.github/docker-compose.yml up --abort-on-container-exit v1_16
+          docker-compose --file ./.github/docker-compose.yml up --abort-on-container-exit v1_17
+          docker-compose --file ./.github/docker-compose.yml up --abort-on-container-exit latest
+
+      - name: Create Pull Request on Change
+        id: cpr
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Bump-up patch version
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        uses: kyoh86/git-vertag-action@v1
+        id: vertag
+        with:
+          method: patch
+      - name: Push tag
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        run: |
+          echo 'Bump-up to:' ${{ steps.vertag.outputs.vertag }}
+          git push --tags
