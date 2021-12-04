@@ -29,7 +29,7 @@ jobs:
           HASH_MOD=${{ hashFiles('./go.mod') }}
           VARIANT=$(TZ=UTC-9 date '+%Y%m%d')
           TAG="${HASH_IMAGE:0:7}${HASH_MOD:0:7}:${VARIANT}"
-          PATH_TAR=${{ env.PATH_CACHE }}"/tar"
+          PATH_TAR="${{ env.PATH_CACHE }}/tar"
           echo "::set-output name=TAG::${TAG}"
           echo "::set-output name=PATH_TAR::${PATH_TAR}"
 
