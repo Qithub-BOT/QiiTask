@@ -2,8 +2,9 @@
 #  Unit Tests on Go v1.15, 16, 17 and latest
 # =============================================================================
 # This Workflow runs unit tests on various Go versions over Docker on any push.
-# This action caches the built Docker image for a day unless any change in the
-# Dockerfile was made.
+#
+# This action caches the built Docker image for a day unless any change was made
+# in the go.mod or Dockerfile.
 name: Go 1.15~latest
 
 on:
@@ -25,8 +26,9 @@ jobs:
         id: imagetag
         run: |
           HASH_IMAGE=${{ hashFiles('./.github/Dockerfile') }}
+          HASH_MOD=${{ hashFiles('./go.mod') }}
           VARIANT=$(TZ=UTC-9 date '+%Y%m%d')
-          TAG="${HASH_IMAGE:0:7}:${VARIANT}"
+          TAG="${HASH_IMAGE:0:7}${HASH_MOD:0:7}:${VARIANT}"
           PATH_TAR=${{ env.PATH_CACHE }}"/tar"
           echo "::set-output name=TAG::${TAG}"
           echo "::set-output name=PATH_TAR::${PATH_TAR}"
