@@ -107,7 +107,7 @@ brews:
     name: qiitask
     # Target repo to tap
     tap:
-      owner: KEINOS
+      owner: Qithub-BOT
       name: homebrew-QiiTask
     # Target directory
     folder: Formula
