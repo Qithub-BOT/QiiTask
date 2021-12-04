@@ -11,6 +11,8 @@ on:
 jobs:
   golangci:
     name: lint
+    if: ${{ !github.event.pull_request.draft }}
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
