@@ -1,5 +1,5 @@
 # =============================================================================
-#  Test Container for Vaious Go Versions (ver. 2021.11.30-09:11)
+#  Test Container for Vaious Go Versions (ver. 2021.12.04-15:35)
 # =============================================================================
 
 # Default version
@@ -18,6 +18,11 @@ RUN apk add --no-cache \
     git \
     bash
 
+COPY ./go.mod /workspaces/go.mod
+COPY ./go.sum /workspaces/go.sum
+
 WORKDIR /workspaces
+
+RUN go mod download
 
 ENTRYPOINT go mod download && go test -race ./...
