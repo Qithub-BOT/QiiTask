@@ -11,7 +11,7 @@ WIP
 
 - [Homebrew](https://brew.sh/index_ja) ([macOS](https://docs.brew.sh/Installation), [Linux](https://docs.brew.sh/Homebrew-on-Linux), [Windows with WSL2](https://docs.brew.sh/Homebrew-on-Linux))
     ```bash
-    brew install Qithub-BOT/QiiTask/qiitask
+    brew install qithub-bot/apps/qiitask
     ```
     ```bash
     # Upgrade to latest version
@@ -19,7 +19,7 @@ WIP
 
     # Uninstall
     brew uninstall qiitask
-    brew untap Qithub-BOT/QiiTask
+    brew untap qithub-bot/apps
     brew doctor
     ```
 - Go Install (Go v1.16+)
