@@ -103,22 +103,22 @@ checksum:
 # Release/update Homebrew tap repository
 brews:
   -
-    # Name of the package: Qithub-BOT/QiiTask
+    # Name of the package: qiitask.rb
     name: qiitask
-    # Target repo to tap
+    # Target repo to tap: Qithub-BOT/homebrew-QiiTask
     tap:
       owner: Qithub-BOT
-      name: homebrew-QiiTask
-    # Target directory
+      name: homebrew-apps
+    # Target directory: Qithub-BOT/homebrew-QiiTask/Formula
     folder: Formula
-    # Path to the archive in release page
+    # URL of the archive in releases page
     url_template: "https://github.com/Qithub-BOT/QiiTask/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
     # Author info to commit to the tap repo
     commit_author:
       name: goreleaserbot
       email: goreleaser@carlosbecker.com
     # Message to display on `brew search` or `brew info`
-    description: "Hello, world! sample of Cobra in Golang."
+    description: "Yet another task management tool."
     homepage: "https://github.com/Qithub-BOT/QiiTask/"
     # Let brew command pull the archive via cURL
     download_strategy: CurlDownloadStrategy

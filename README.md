@@ -14,8 +14,9 @@ WIP
     brew install Qithub-BOT/QiiTask/qiitask
     ```
     ```bash
-    # Update
-    brew update && brew upgrade qiitask
+    # Upgrade to latest version
+    brew upgrade qiitask
+
     # Uninstall
     brew uninstall qiitask
     brew untap Qithub-BOT/QiiTask
