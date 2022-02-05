@@ -5,9 +5,9 @@ import (
 	"testing"
 
 	"github.com/KEINOS/go-utiles/util"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdlist"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdroot"
 	"github.com/Qithub-BOT/QiiTask/core/appinfo"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdlist"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdroot"
 	"github.com/kami-zh/go-capturer"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

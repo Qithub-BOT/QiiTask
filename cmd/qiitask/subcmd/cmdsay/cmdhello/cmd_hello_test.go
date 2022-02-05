@@ -3,9 +3,9 @@ package cmdhello_test
 import (
 	"testing"
 
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdroot"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdsay/cmdhello"
 	"github.com/Qithub-BOT/QiiTask/core/appinfo"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdroot"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdsay/cmdhello"
 	"github.com/kami-zh/go-capturer"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

@@ -7,10 +7,10 @@ import (
 
 	"github.com/1set/todotxt"
 	"github.com/KEINOS/go-utiles/util"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdsort"
 	"github.com/Qithub-BOT/QiiTask/core/appinfo"
 	"github.com/Qithub-BOT/QiiTask/core/cui"
 	"github.com/Qithub-BOT/QiiTask/core/todo"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdsort"
 	"github.com/kami-zh/go-capturer"
 	"github.com/spf13/cobra"
 	"github.com/stretchr/testify/assert"
