@@ -159,7 +159,7 @@ if CGO_ENABLED=0 \
     GOARM="$GOARM" \
     go build \
     -installsuffix "$NAME_FILE_BIN" \
-    -ldflags="-s -w -extldflags \"-static\" -X 'main.Version=${VERSION_APP}'" \
+    -ldflags="-s -w -extldflags \"-static\" -X 'main.version=${VERSION_APP}'" \
     -o="$PATH_FILE_BIN_FINAL" \
     ./"$NAME_FILE_BIN"/; then
     exit $SUCCESS

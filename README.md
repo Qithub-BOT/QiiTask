@@ -1,40 +1,31 @@
 <!-- markdownlint-disable MD001 MD041 MD031 MD033 -->
-[![go1.15+](https://img.shields.io/badge/Go-1.15,%2016,%2017,%20latest-blue?logo=go)](https://github.com/Qithub-BOT/QiiTask/actions/workflows/go-versions.yml "Supported versions")
+[![go1.16+](https://img.shields.io/badge/Go-1.16,%2017,%20latest-blue?logo=go)](https://github.com/Qithub-BOT/QiiTask/actions/workflows/go-versions.yml "Supported versions")
 [![Go Reference](https://pkg.go.dev/badge/github.com/Qithub-BOT/QiiTask.svg)](https://pkg.go.dev/github.com/Qithub-BOT/QiiTask#section-documentation "Read generated documentation of the app")
 [![GitHub Codespaces](https://img.shields.io/badge/Codespaces-compatible-blue?logo=github)](https://github.dev/Qithub-BOT/QiiTask "オンラインで VSCode を起動する")
 
 # QiiTask <sub><sup><sup>alpha</sup></sup></sub>
 
-WIP
+QiiTask は、**ものごとの優先度をエンジニアらしくソート・アルゴリズムでキメるツール**です。
+
+仕組み自体は単純で、文字列の配列をソートする際の比較処理（`a < b`）を、対話式でユーザーに決めさせるだけです。
+
+```shellsession
+$ cat todo.txt
+
+```
 
 ## Install
 
-- [Homebrew](https://brew.sh/index_ja) ([macOS](https://docs.brew.sh/Installation), [Linux](https://docs.brew.sh/Homebrew-on-Linux), [Windows with WSL2](https://docs.brew.sh/Homebrew-on-Linux))
+- Via [Homebrew](https://brew.sh/index_ja) ([macOS](https://docs.brew.sh/Installation), [Linux](https://docs.brew.sh/Homebrew-on-Linux), [Windows with WSL2](https://docs.brew.sh/Homebrew-on-Linux))
     ```bash
     brew install qithub-bot/apps/qiitask
     ```
-    <details><summary>Upgrade & Uninstall</summary>
 
-    ```bash
-    # Upgrade to latest version
-    brew upgrade qiitask
-
-    # Uninstall
-    brew uninstall qiitask
-    brew untap qithub-bot/apps
-    brew doctor
-    ```
-    </details>
-
-- Go Install (Go v1.16+)
+- Via Go Install
     ```bash
     go install "github.com/Qithub-BOT/QiiTask/qiitask@latest"
     ```
-- Go get (Go v1.15)
-    ```bash
-    GO111MODULE="on" go get -u "github.com/Qithub-BOT/QiiTask/qiitask@latest"
-    ```
-- Released Binary
+- Manual Install (Download binary from releases)
   - [Releases](https://github.com/Qithub-BOT/QiiTask/releases/latest) ページから該当する OS/CPU に合ったアーカイブをダウンロードして、パスの通ったディレクトリ に設置してください。（要実行権限）
 
 ## Statuses

@@ -1,5 +1,5 @@
 *.cache
 man
 coverage.out
-/bin/*
+bin/
 dist/

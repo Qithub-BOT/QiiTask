@@ -36,7 +36,8 @@
 	"extensions": [
 		"golang.Go",
 		"foxundermoon.shell-format",
-		"redhat.vscode-yaml"
+		"redhat.vscode-yaml",
+		"hediet.vscode-drawio"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
