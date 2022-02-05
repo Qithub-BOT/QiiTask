@@ -16,5 +16,4 @@ func (ui *UI) DrawHR() {
 	hr := strings.Repeat("-", width)
 
 	fmt.Fprintf(ui.MirrorIO, "%v\n", hr)
-	//fmt.Println(hr)
 }

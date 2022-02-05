@@ -133,6 +133,7 @@ func (c *Command) Init(cmd *cobra.Command, args []string) error {
 	return c.ForceInit(cmd, pathDirConf)
 }
 
+// ForceInit forces to initialize the configuration file.
 func (c *Command) ForceInit(cmd *cobra.Command, pathDirConf string) error {
 	if err := OsMkdirAll(pathDirConf, 0o755); err != nil {
 		return errors.Wrap(err, "failed to create app config directory")

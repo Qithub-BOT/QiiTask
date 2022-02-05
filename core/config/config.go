@@ -115,6 +115,7 @@ func (c *Config) GetQuerySubjective() []string {
 	return result
 }
 
+// GetQuery returns the query instance which is used to query the user.
 func (c *Config) GetQuery() *query.Query {
 	if queryInterface, ok := c.Get("queries").(query.Query); ok {
 		return &queryInterface

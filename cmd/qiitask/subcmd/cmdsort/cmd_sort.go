@@ -92,7 +92,6 @@ func (c *Command) askIsALessThanB(a, b string, indexQ int) bool {
 	}
 
 	answer, err := c.CUI.Select(questions[indexQ], selections, idontknow, "")
-
 	// TODO: fatal はよろしくない
 	if err != nil {
 		log.Fatalf("強制終了されました（タスクに変更はありません）: %v\n", err)

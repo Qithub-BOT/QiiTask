@@ -10,7 +10,7 @@ import (
 	"github.com/AlecAivazis/survey/v2"
 )
 
-// TimeoutDefault は入力待ちのデフォルトの待ち時間です。（秒）
+// TimeoutDefault は入力待ちのデフォルトの待ち時間です。（秒）.
 const TimeoutDefault = 5
 
 // WidthTermDefault はターミナルの画面幅が取得dけいない場合のデフォルトの画面幅です。

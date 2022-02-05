@@ -132,9 +132,10 @@ func TestSort_query_not_ready(t *testing.T) {
 
 func TestSort_query_not_ready_and_fail_save(t *testing.T) {
 	tmpDir := t.TempDir()
-
 	tmpFileTask := filepath.Join(tmpDir, "todo.txt")
-	os.WriteFile(tmpFileTask, []byte{}, 0o600)
+
+	err := os.WriteFile(tmpFileTask, []byte{}, 0o600)
+	require.NoError(t, err)
 
 	appInfo, err := appinfo.New(tmpDir, t.TempDir(), "")
 	require.NoError(t, err)
@@ -242,7 +243,8 @@ func TestSurvaySave(t *testing.T) {
 	tmpDir := t.TempDir()
 
 	tmpFileTask := filepath.Join(tmpDir, "todo.txt")
-	os.WriteFile(tmpFileTask, []byte{}, 0o600)
+	err := os.WriteFile(tmpFileTask, []byte{}, 0o600)
+	require.NoError(t, err)
 
 	appInfo, err := appinfo.New(tmpDir, t.TempDir(), "")
 	require.NoError(t, err)
