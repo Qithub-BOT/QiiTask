@@ -9,8 +9,8 @@ import (
 	"runtime/debug"
 
 	"github.com/KEINOS/go-utiles/util"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdroot"
 	"github.com/Qithub-BOT/QiiTask/core/appinfo"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdroot"
 )
 
 // FAILURE is an alias of exit status code to ease read.

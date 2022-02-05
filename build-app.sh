@@ -17,6 +17,7 @@
 # -----------------------------------------------------------------------------
 # Name of the CLI app
 NAME_FILE_BIN='qiitask'
+NAME_DIR_MAIN_SRC='cmd/qiitask'
 
 # App Version from git tag
 VERSION_APP="$(git describe --tag)"
@@ -161,7 +162,7 @@ if CGO_ENABLED=0 \
     -installsuffix "$NAME_FILE_BIN" \
     -ldflags="-s -w -extldflags \"-static\" -X 'main.version=${VERSION_APP}'" \
     -o="$PATH_FILE_BIN_FINAL" \
-    ./"$NAME_FILE_BIN"/; then
+    ./"$NAME_DIR_MAIN_SRC"/; then
     exit $SUCCESS
 fi
 echo 'Failed to build binary.'

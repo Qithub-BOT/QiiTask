@@ -2,11 +2,11 @@ package cmdroot
 
 import (
 	"github.com/KEINOS/go-utiles/util"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdinit"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdlist"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdsay"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdsort"
 	"github.com/Qithub-BOT/QiiTask/core/appinfo"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdinit"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdlist"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdsay"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdsort"
 	"github.com/spf13/cobra"
 )
 

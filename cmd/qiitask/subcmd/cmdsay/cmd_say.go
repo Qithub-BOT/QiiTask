@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	"github.com/KEINOS/go-utiles/util"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdsay/cmdhello"
 	"github.com/Qithub-BOT/QiiTask/core/appinfo"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdsay/cmdhello"
 	"github.com/spf13/cobra"
 )
 

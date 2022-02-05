@@ -45,7 +45,7 @@ snapshot:
 builds:
   -
     # Target directory of main.go
-    main: ./qiitask
+    main: ./cmd/qiitask
     # Output binary name
     binary: qiitask
     env:

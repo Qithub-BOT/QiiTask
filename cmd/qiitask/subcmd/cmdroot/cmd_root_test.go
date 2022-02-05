@@ -3,10 +3,10 @@ package cmdroot_test
 import (
 	"testing"
 
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdroot"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdsay"
+	"github.com/Qithub-BOT/QiiTask/cmd/qiitask/subcmd/cmdsay/cmdhello"
 	"github.com/Qithub-BOT/QiiTask/core/appinfo"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdroot"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdsay"
-	"github.com/Qithub-BOT/QiiTask/qiitask/cmd/cmdsay/cmdhello"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
