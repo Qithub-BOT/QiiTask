@@ -108,6 +108,7 @@ func (c *Command) askIsALessThanB(a, b string, indexQ int) bool {
 	return answer == a
 }
 
+// GetTaks は現在のタスク一覧のを返します。完了済のタスクはソートされた状態で返されます。
 func (c *Command) GetTaks() (*todo.Todo, error) {
 	taskList := c.AppInfo.Tasks.Local
 

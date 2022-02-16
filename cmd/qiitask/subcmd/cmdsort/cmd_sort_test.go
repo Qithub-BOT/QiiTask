@@ -36,6 +36,8 @@ func createTask(t *testing.T, todo string, isDone bool) todotxt.Task {
 }
 
 func createSortCommand(t *testing.T, pathDirTemp string) *cmdsort.Command {
+	t.Helper()
+
 	appInfo, err := appinfo.New(pathDirTemp, pathDirTemp, "")
 	require.NoError(t, err)
 
