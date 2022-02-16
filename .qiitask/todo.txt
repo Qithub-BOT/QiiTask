@@ -1,0 +1,38 @@
+アプリ起動時にタスクの有無チェック
+init コマンドの骨組み（グローバルタスク&設定の作成） +cmdinit
+cmdsort のユニットテストと初回カバレッジ網羅 +cmdsort
+cmdsort 時の設定ファイル作成でディレクトリ作成
+cmdsort -n オプションの実装とテスト +cmdsort
+add コマンドの骨組み作成 +cmdadd
+デフォルトの質問選択時に質問を選択するUI
+list --all で全て表示 +cmdlist
+sort 開始時に開始した旨を表示
+sort 後の未完成タスクに(B)優先度を付与 +cmdsort
+close コマンドの骨組み作成 +cmdclose
+edit コマンドの骨組み作成 +cmdedit
+テーブル表示時に --verbose モードで詳細表示
+set コマンドの骨組み作成 +cmdset
+list --tag <タグ名> で特定タグ付きのタスク表示 +cmdlist
+list 時に -o/--out でファイル出力
+info コマンドの骨組み作成 +cmdinfo
+qiitask -h 時のヘルプの英文を日本語に
+sort 時の質問にタグを表示 +cmdsort
+国際化対応 +enhance
+質問集のシェア（質問集 repo へのインメモリ PR 機能）with go-git +core.config
+x 2021-12-19 list 時に --add-no-edit オプション
+x 2021-12-17 テーブルやリスト表示などの ui を別パッケージ化 +cmdsort +core.cui
+x 2021-12-14 config に Query（質問集）を加える +appinfo
+x 2021-12-13 sort コマンドの骨組み → イメージボードに追記
+x 2021-12-13 sort 時に質問集のタイプを問い合わせる +cmdsort
+x 2021-12-13 sort 後に上書き保存 +cmdsort
+x 2021-12-11 say --help の Examples のインデント修正
+x 2021-12-11 todo.txt の書き込み
+x 2021-12-11 todo 型に CustomSort メソッドを実装
+x 2021-12-09 list 時に 5 個おきに区切り線を入れる
+x 2021-12-08 hello -> say, world -> hello に変更
+x 2021-12-08 /cmd を /qiitask/cmd に移動
+x 2021-12-06 list コマンドでタスクの表示
+x 2021-12-06 todo.txt の読み込み
+x 2021-12-06 アプリ起動時にアプリの config ファイルをチェックする
+x 2021-12-04 とりあえず動く状態にする（Hello World）
+x 2021-12-04 Homebrew でインストール可能にする

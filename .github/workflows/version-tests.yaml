@@ -1,10 +1,13 @@
 # =============================================================================
-#  Unit Tests on Go v1.15, 16, 17 and latest
+#  Unit Tests on Go v1.16, 17 and latest
 # =============================================================================
 # This Workflow runs unit tests on various Go versions over Docker on any push.
-# This action caches the built Docker image for a day unless any change in the
-# Dockerfile was made.
-name: Go 1.15~latest
+#
+# This action caches the built Docker image for a day unless any change was made
+# in the go.mod or Dockerfile.
+#
+# Due to the use of "embed" module, the Go 1.15 check is deprecated.
+name: Go 1.16~latest
 
 on:
   workflow_dispatch:
@@ -25,13 +28,14 @@ jobs:
         id: imagetag
         run: |
           HASH_IMAGE=${{ hashFiles('./.github/Dockerfile') }}
+          HASH_MOD=${{ hashFiles('./go.mod') }}
           VARIANT=$(TZ=UTC-9 date '+%Y%m%d')
-          TAG="${HASH_IMAGE:0:7}:${VARIANT}"
-          PATH_TAR=${{ env.PATH_CACHE }}"/tar"
+          TAG="${HASH_IMAGE:0:7}${HASH_MOD:0:7}:${VARIANT}"
+          PATH_TAR="${{ env.PATH_CACHE }}/tar"
           echo "::set-output name=TAG::${TAG}"
           echo "::set-output name=PATH_TAR::${PATH_TAR}"
 
-      - name: Cache or restore image archive
+      - name: Enable Cache to save/restore image archive
         id: cache
         uses: actions/cache@v2
         with:
@@ -41,7 +45,6 @@ jobs:
       - name: Load Docker images if exist
         if: steps.cache.outputs.cache-hit == 'true'
         run: |
-          docker load --input ${{ steps.imagetag.outputs.PATH_TAR }}/github_v1_15_1.tar
           docker load --input ${{ steps.imagetag.outputs.PATH_TAR }}/github_v1_16_1.tar
           docker load --input ${{ steps.imagetag.outputs.PATH_TAR }}/github_v1_17_1.tar
           docker load --input ${{ steps.imagetag.outputs.PATH_TAR }}/github_latest_1.tar
@@ -51,7 +54,6 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           : # Pull images one-by-one for stability
-          docker pull golang:1.15-alpine
           docker pull golang:1.16-alpine
           docker pull golang:1.17-alpine
           docker pull golang:alpine
@@ -67,14 +69,11 @@ jobs:
       - name: Save built images if no-exists
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          docker save --output ${{ steps.imagetag.outputs.PATH_TAR }}/github_v1_15_1.tar github_v1_15:latest
           docker save --output ${{ steps.imagetag.outputs.PATH_TAR }}/github_v1_16_1.tar github_v1_16:latest
           docker save --output ${{ steps.imagetag.outputs.PATH_TAR }}/github_v1_17_1.tar github_v1_17:latest
           docker save --output ${{ steps.imagetag.outputs.PATH_TAR }}/github_latest_1.tar github_latest:latest
           docker save --output ${{ steps.imagetag.outputs.PATH_TAR }}/github_mergeability_1.tar github_mergeability:latest
 
-      - name: Run tests on Go 1.15
-        run: docker-compose --file ./.github/docker-compose.yml up --abort-on-container-exit v1_15
       - name: Run tests on Go 1.16
         run: docker-compose --file ./.github/docker-compose.yml up --abort-on-container-exit v1_16
       - name: Run tests on Go 1.17
