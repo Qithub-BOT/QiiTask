@@ -108,7 +108,7 @@ func (c *Command) askIsALessThanB(a, b string, indexQ int) bool {
 	return answer == a
 }
 
-func (c *Command) getTaks() (*todo.Todo, error) {
+func (c *Command) GetTaks() (*todo.Todo, error) {
 	taskList := c.AppInfo.Tasks.Local
 
 	if c.isGlobal {
@@ -174,7 +174,7 @@ func (c *Command) Sort(cmd *cobra.Command, args []string) error {
 		}
 	}
 
-	answers, err := c.getTaks()
+	answers, err := c.GetTaks()
 	if err != nil {
 		return errors.Wrap(err, "fail to get task list")
 	}

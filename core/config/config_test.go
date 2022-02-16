@@ -11,6 +11,47 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestGetQuery(t *testing.T) {
+	// Empty conf
+	{
+		pathDirTest := filepath.Join(
+			util.GetPathDirRepo(),
+			"testdata",
+			"golden",
+			"working_task_under_conf",
+		)
+
+		conf, err := config.New(pathDirTest, t.TempDir())
+		require.NoError(t, err)
+
+		// Test
+		result := conf.GetQuery()
+
+		// Assertions
+		require.Nil(t, result, "if conf file is empty it should return an error")
+	}
+
+	// Golden conf
+	{
+		pathDirTest := filepath.Join(
+			util.GetPathDirRepo(),
+			"testdata",
+			"golden",
+			"working_with_task_and_conf",
+		)
+
+		conf, err := config.New(pathDirTest, t.TempDir())
+		require.NoError(t, err)
+
+		// Test
+		result := conf.GetQuery()
+
+		// Assertions
+		require.NotNil(t, result)
+		assert.Equal(t, "これはテスト用の質問集です", result.Description)
+	}
+}
+
 func TestLoad(t *testing.T) {
 	pathDirTest := filepath.Join(util.GetPathDirRepo(), "testdata", "golden", "working_with_task_and_conf")
 	pathDirConf := filepath.Join(pathDirTest, ".qiitask")

@@ -17,6 +17,44 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// ----------------------------------------------------------------------------
+//  Helper Functions
+// ----------------------------------------------------------------------------
+
+func createTask(t *testing.T, todo string, isDone bool) todotxt.Task {
+	t.Helper()
+
+	newTask := todotxt.Task{
+		Todo: todo,
+	}
+
+	if isDone {
+		newTask.Completed = isDone
+	}
+
+	return newTask
+}
+
+func createSortCommand(t *testing.T, pathDirTemp string) *cmdsort.Command {
+	appInfo, err := appinfo.New(pathDirTemp, pathDirTemp, "")
+	require.NoError(t, err)
+
+	appInfo.Tasks.Global.TaskList = nil
+	appInfo.Tasks.Local.TaskList = nil
+
+	obj := new(cmdsort.Command)
+
+	obj.Command = new(cobra.Command)
+	obj.AppInfo = appInfo
+	obj.CUI = cui.New()
+
+	return obj
+}
+
+// ----------------------------------------------------------------------------
+//  Tests
+// ----------------------------------------------------------------------------
+
 func TestNew(t *testing.T) {
 	appInfo, err := appinfo.New(t.TempDir(), t.TempDir(), "")
 	require.NoError(t, err)
@@ -27,44 +65,24 @@ func TestNew(t *testing.T) {
 	assert.NotSame(t, obj1, obj2, "it should not reference the same object")
 }
 
-func createTask(t *testing.T, todo string, asDone bool) todotxt.Task {
-	t.Helper()
-
-	newTask := todotxt.Task{
-		Todo: todo,
-	}
-
-	if asDone {
-		newTask.Completed = asDone
-	}
-
-	return newTask
-}
-
 func TestSort(t *testing.T) {
 	tmpDir := t.TempDir()
-	appInfo, err := appinfo.New(tmpDir, tmpDir, "")
-	require.NoError(t, err)
+	obj := createSortCommand(t, tmpDir)
 
 	retrunOrigin := util.ChDir(tmpDir)
 	defer retrunOrigin()
 
-	appInfo.Tasks.Global.TaskList = &todotxt.TaskList{
+	obj.AppInfo.Tasks.Global.TaskList = &todotxt.TaskList{
 		createTask(t, "global task 1", true),
 		createTask(t, "global task 2", true),
 	}
-	appInfo.Tasks.Local.TaskList = &todotxt.TaskList{
+	obj.AppInfo.Tasks.Local.TaskList = &todotxt.TaskList{
 		createTask(t, "local task 1", true),
 		createTask(t, "local task 2", true),
 		createTask(t, "local task 3", false),
 		createTask(t, "local task 4", false),
 		createTask(t, "local task 5", true),
 	}
-
-	obj := new(cmdsort.Command)
-	obj.Command = new(cobra.Command)
-	obj.AppInfo = appInfo
-	obj.CUI = cui.New()
 
 	obj.CUI.ForceTrue = true
 	obj.CUI.ForceString = "task"
@@ -73,7 +91,7 @@ func TestSort(t *testing.T) {
 	cmdRoot.AddCommand(obj.Command)
 
 	out := capturer.CaptureOutput(func() {
-		err = obj.Sort(cmdRoot, []string{})
+		err := obj.Sort(cmdRoot, []string{})
 		require.NoError(t, err)
 	})
 

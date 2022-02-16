@@ -11,8 +11,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-// ----------------------------------------------------------------------------
-
 func TestNew(t *testing.T) {
 	appInfo, err := appinfo.New("", "", "")
 	require.NoError(t, err)

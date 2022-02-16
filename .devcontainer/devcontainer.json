@@ -16,13 +16,25 @@
 		"seccomp=unconfined",
 		"--env=GITHUB_TOKEN"
 	],
-
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
+		"gopls": {
+			"experimentalWorkspaceModule": true
+		},
 		"go.toolsManagement.checkForUpdates": "local",
 		"go.useLanguageServer": true,
 		"go.gopath": "/go",
 		"go.goroot": "/usr/local/go",
+		// Show coverage on save
+		"go.coverOnSave": true,
+		"go.coverageDecorator": {
+			"type": "gutter",
+			"coveredHighlightColor": "rgba(64,128,128,0.5)",
+			"uncoveredHighlightColor": "rgba(128,64,64,0.25)",
+			"coveredGutterStyle": "blockgreen",
+			"uncoveredGutterStyle": "blockred"
+		},
+		"go.coverOnSingleTest": true,
 		"terminal.integrated.profiles.linux": {
 			"bash (login)": {
 				"path": "/bin/bash",
@@ -31,7 +43,6 @@
 		},
 		"shellformat.path": "/go/bin/shfmt"
 	},
-
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"golang.Go",
@@ -39,13 +50,10 @@
 		"redhat.vscode-yaml",
 		"hediet.vscode-drawio"
 	],
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "go mod download",
-
 	// Comment out to connect as root to debug container.
 	// "remoteUser": "root"
 }

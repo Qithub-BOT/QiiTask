@@ -44,14 +44,22 @@ func New(appInfo *appinfo.AppInfo) *cobra.Command {
 			`),
 			Example: util.HereDoc(`
 				$ qiitask --version
+				$ qiitask help
+				$ qiitask list
 
-				$ qiitask hello
-				$ qiitask hello --reverse
-				$ qiitask hello foo bar
-				$ qiitask hello foo bar --reverse
+				■ コマンドの中にはサブコマンドがあるものもあります。以下の hello は say
+				のサブコマンドです。
 
-				$ qiitask hello world
-				$ qiitask hello world --reverse
+				$ qiitask say hello
+
+				■ コマンドのヘルプ表示
+
+				$ qiitask list -h .......... list コマンドのヘルプを表示します。
+				$ qiitask help list ........ list コマンドのヘルプを表示します。
+				$ qiitask say hello -h ..... hello サブコマンドのヘルプを表示します。
+				$ qiitask help say hello ... hello サブコマンドのヘルプを表示します。
+
+				■ bash などのシェル補完スクリプト（completion）を出力することもできます。
 
 				$ qiitask completion --help
 				$ qiitask completion bash > qiitask_completion.sh`,
